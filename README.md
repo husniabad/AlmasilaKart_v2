@@ -1,4 +1,4 @@
-# AlmasilaKArt Ecommerce Website With Django + React
+# AlmasilaKart Ecommerce Website With Django + React
 
 
 

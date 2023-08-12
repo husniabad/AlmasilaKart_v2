@@ -19,7 +19,7 @@
 
 # Download & Setup Instructions
 
-* 1 - Clone projec
+* 1 - Clone project
 * 2 - cd AlmasilaKart_v2
 * 3 - Create virtual environment: virtualenv myenv
 * 4 - myenv\scripts\activate

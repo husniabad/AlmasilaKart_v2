@@ -30,7 +30,12 @@ function Header() {
                         <Nav className="ml-auto">
 
                             <LinkContainer to='/cart'>
-                                <Nav.Link ><i className="fas fa-shopping-cart"></i>Cart</Nav.Link>
+                                <Nav.Link >
+                                    <i className="fas fa-shopping-cart position-relative">
+                                        
+                                {/* <span class="position-absolute top-50 start-100 translate-middle text-danger badge badge-sm rounded-pill bg-secondary">9 </span> */}
+                                        </i>Cart
+                                </Nav.Link>
                             </LinkContainer>
 
                             {userInfo ? (

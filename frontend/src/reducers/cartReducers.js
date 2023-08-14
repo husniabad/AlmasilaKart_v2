@@ -16,10 +16,15 @@ export const cartReducer = (state = { cartItems: [], shippingAddress: {} }, acti
     switch (action.type) {
         case CART_ADD_ITEM:
             const newItem = action.payload;
+
             const existingItem = state.cartItems.find(x => x.product === newItem.product);
+            console.log("add payload", newItem.product)
+            console.log("current item ", existingItem, "closed.......//////////")
+
 
             if (existingItem) {
                 const newQty = existingItem.qty + newItem.qty;
+
                 if (newQty <= existingItem.countInStock) {
                   return {
                     ...state,
@@ -54,13 +59,15 @@ export const cartReducer = (state = { cartItems: [], shippingAddress: {} }, acti
             //     }
             // }
             case CART_MINUS_ITEM:
-                const productIdToMinus = action.payload;
+                const minusItem = action.payload;
+  
                 const updatedCartItems = state.cartItems.map(item =>
-                  item.product === productIdToMinus 
-                    ? { ...item, qty: item.qty - 1 }
-                    : item
-                );
-                
+                  item.product === Number(minusItem) 
+                  ? { ...item, qty: item.qty - 1 }
+                  : item
+                  );
+                  
+                console.log("action paylod: ",minusItem)
                 console.log('Updated cartItems after CART_MINUS_ITEM:', updatedCartItems); // Add this line
           
                 return {

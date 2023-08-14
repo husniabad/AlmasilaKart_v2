@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Button, Card, Form } from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Button, Card, Form, ButtonGroup,InputGroup } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import { addToCart, minusCart } from '../actions/cartActions'
+import { addToCart, minusCart,removeFromCart } from '../actions/cartActions'
 import { listProductDetails, createProductReview } from '../actions/productActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
@@ -18,6 +18,14 @@ function ProductScreen({ match, history }) {
 
     const productDetails = useSelector(state => state.productDetails)
     const { loading, error, product } = productDetails
+
+
+    const cart = useSelector(state => state.cart);
+    const { cartItems } = cart;
+  
+    const itemInCart = cartItems.find(item => item.product === Number(match.params.id));
+    // console.log("item in cart", itemInCart.qty)
+
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
@@ -46,7 +54,14 @@ function ProductScreen({ match, history }) {
     }
 
     const minusCartHandler = () => {
+        // delete one item at once
         dispatch(minusCart(match.params.id))
+    }
+
+    const removeItemHandler =() => {
+        console.log("item removed")
+        dispatch(removeFromCart(Number(match.params.id)))
+        
     }
 
     const submitHandler = (e) => {
@@ -142,20 +157,36 @@ function ProductScreen({ match, history }) {
 
 
                                             <ListGroup.Item>
+                                            
+                                                {!itemInCart || itemInCart.qty <= 0?
                                                 <Button
                                                     onClick={addToCartHandler}
                                                     className='btn-block'
                                                     disabled={product.countInStock == 0}
                                                     type='button'>
-                                                    Add to Cart
+                                                    Add to Cart 
                                                 </Button>
-                                                <Button
-                                                    onClick={minusCartHandler}
-                                                    className='btn-block'
-                                                    disabled={product.countInStock == 0}
-                                                    type='button'>
-                                                    -
-                                                </Button>
+                                                 :
+                                                <InputGroup className=" d-flex align-items-center justify-content-center text-center">
+
+                                                    <Button
+                                                        onClick={itemInCart.qty > 1 ? minusCartHandler : removeItemHandler}
+                                                        className='btn'
+                                                        disabled={product.countInStock == 0}
+                                                        type='button'>
+                                                        <i className={`fas fa-${itemInCart.qty > 1 ? "minus":"trash"}`}></i>
+                                                    </Button>
+                                                    {/* <InputGroup.Text type="text" className="  form-control  text-center" value="1" >{itemInCart.qty}</InputGroup.Text> */}
+                                                    <input type="text" className='form-control text-center bg-transparent   fw-bold' disabled value={itemInCart.qty} />
+                                                    <Button
+                                                        onClick={addToCartHandler}
+                                                        className='btn'
+                                                        disabled={product.countInStock <= itemInCart.qty}
+                                                        type='button'>
+                                                        <i className='fas fa-plus'></i>
+                                                    </Button>
+                                                </InputGroup>
+                                                }
                                             </ListGroup.Item>
                                         </ListGroup>
                                     </Card>

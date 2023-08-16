@@ -1,9 +1,14 @@
+a{
+    text-decoration: none !important;
+}
+
 main{
     min-height: 80vh;
 }
 
 h1{
   font-size: 1.8rem;
+  text-transform: lowercase ;
   padding:1rem 0;
 }
 

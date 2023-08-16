@@ -5,7 +5,8 @@ import { Row, Col, Image, ListGroup, Button, Card, Form, ButtonGroup,InputGroup 
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import { addToCart, minusCart,removeFromCart } from '../actions/cartActions'
+import ProductButtons from '../components/ProductButtons'
+// import { addToCart, minusCart,removeFromCart } from '../actions/cartActions'
 import { listProductDetails, createProductReview } from '../actions/productActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
@@ -48,20 +49,20 @@ function ProductScreen({ match, history }) {
 
     }, [dispatch, match, successProductReview])
 
-    const addToCartHandler = () => {
-        // history.push(`/cart/${match.params.id}?qty=${qty}`)
-        dispatch(addToCart(match.params.id, Number(qty)));
-    }
+    // const addToCartHandler = () => {
+    //     // history.push(`/cart/${match.params.id}?qty=${qty}`)
+    //     dispatch(addToCart(match.params.id, Number(qty)));
+    // }
 
-    const minusCartHandler = () => {
-        // delete one item at once
-        dispatch(minusCart(match.params.id))
-    }
+    // const minusCartHandler = () => {
+    //     // delete one item at once
+    //     dispatch(minusCart(match.params.id))
+    // }
 
-    const removeItemHandler =() => {
-        dispatch(removeFromCart(Number(match.params.id)))
+    // const removeItemHandler =() => {
+    //     dispatch(removeFromCart(Number(match.params.id)))
         
-    }
+    // }
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -157,36 +158,14 @@ function ProductScreen({ match, history }) {
 
                                             <ListGroup.Item>
                                             
-                                                {!itemInCart || itemInCart.qty <= 0?
-                                                <Button
-                                                    onClick={addToCartHandler}
-                                                    className='btn-block'
-                                                    disabled={product.countInStock == 0}
-                                                    type='button'>
-                                                    Add to Cart 
-                                                </Button>
-                                                 :
-                                                <InputGroup className=" d-flex flex-nowrap align-items-center justify-content-between     text-center">
-
-                                                    <Button
-                                                        onClick={itemInCart.qty > 1 ? minusCartHandler : removeItemHandler}
-                                                        className='btn '
-                                                        disabled={product.countInStock == 0}
-                                                        type='button'>
-                                                        <i className={`fas fa-${itemInCart.qty > 1 ? "minus":"trash"}`}></i>
-                                                    </Button>
-                                                    {/* <InputGroup.Text type="text" className="  form-control  text-center" value="1" >{itemInCart.qty}</InputGroup.Text> */}
-                                                    {/* <input type="text" className='form-control text-center bg-transparent   fw-bold' disabled value={itemInCart.qty} /> */}
-                                                    <span className='bg-transparent w-auto '>{itemInCart.qty}</span>
-                                                    <Button
-                                                        onClick={addToCartHandler}
-                                                        className='btn '
-                                                        disabled={product.countInStock <= itemInCart.qty}
-                                                        type='button'>
-                                                        <i className='fas fa-plus'></i>
-                                                    </Button>
-                                                </InputGroup>
-                                                }
+                                            <ProductButtons
+                                                itemInCart={itemInCart}
+                                                product={product}
+                                                // qty={qty}
+                                                // addToCartHandler={addToCartHandler}
+                                                // minusCartHandler={minusCartHandler}
+                                                // removeItemHandler={removeItemHandler}
+                                            />
                                             </ListGroup.Item>
                                         </ListGroup>
                                     </Card>

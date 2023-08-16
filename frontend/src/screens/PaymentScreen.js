@@ -70,14 +70,14 @@ function PaymentScreen({ history }) {
          <ToggleButton
             
             value='PayPal'
-            className={paymentMethod === 'PayPal' ? 'btn btn-dark mr-2' : 'mr-2 btn border border-dark btn-light'}
+            className={paymentMethod === 'PayPal' ? 'btn btn-info mr-2' : 'mr-2 btn border border-info btn-light'}
           >
             PayPal or Credit Card
           </ToggleButton>
           <ToggleButton
           
             value='wallet'
-            className={paymentMethod === 'wallet' ? 'btn btn-dark ml-2' : 'ml-2 btn border border-dark btn-light'}
+            className={paymentMethod === 'wallet' ? 'btn btn-info ml-2' : 'ml-2 btn border border-info btn-light'}
           >
             Wallet
           </ToggleButton>

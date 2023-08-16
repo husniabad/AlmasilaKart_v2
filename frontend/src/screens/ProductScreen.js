@@ -59,7 +59,6 @@ function ProductScreen({ match, history }) {
     }
 
     const removeItemHandler =() => {
-        console.log("item removed")
         dispatch(removeFromCart(Number(match.params.id)))
         
     }
@@ -125,7 +124,7 @@ function ProductScreen({ match, history }) {
                                                 <Row>
                                                     <Col>Status:</Col>
                                                     <Col>
-                                                        {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
+                                                        {product.countInStock > 0 ? <p className='text-success'>In Stock</p> : <p className='text-warning'>Out of Stock</p>}
                                                     </Col>
                                                 </Row>
                                             </ListGroup.Item>
@@ -167,20 +166,21 @@ function ProductScreen({ match, history }) {
                                                     Add to Cart 
                                                 </Button>
                                                  :
-                                                <InputGroup className=" d-flex align-items-center justify-content-center text-center">
+                                                <InputGroup className=" d-flex flex-nowrap align-items-center justify-content-between     text-center">
 
                                                     <Button
                                                         onClick={itemInCart.qty > 1 ? minusCartHandler : removeItemHandler}
-                                                        className='btn'
+                                                        className='btn '
                                                         disabled={product.countInStock == 0}
                                                         type='button'>
                                                         <i className={`fas fa-${itemInCart.qty > 1 ? "minus":"trash"}`}></i>
                                                     </Button>
                                                     {/* <InputGroup.Text type="text" className="  form-control  text-center" value="1" >{itemInCart.qty}</InputGroup.Text> */}
-                                                    <input type="text" className='form-control text-center bg-transparent   fw-bold' disabled value={itemInCart.qty} />
+                                                    {/* <input type="text" className='form-control text-center bg-transparent   fw-bold' disabled value={itemInCart.qty} /> */}
+                                                    <span className='bg-transparent w-auto '>{itemInCart.qty}</span>
                                                     <Button
                                                         onClick={addToCartHandler}
-                                                        className='btn'
+                                                        className='btn '
                                                         disabled={product.countInStock <= itemInCart.qty}
                                                         type='button'>
                                                         <i className='fas fa-plus'></i>

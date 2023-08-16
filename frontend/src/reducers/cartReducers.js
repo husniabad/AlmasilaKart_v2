@@ -1,4 +1,10 @@
 import {
+
+  // CART_LIST_REQUEST,
+  //   CART_LIST_SUCCESS,
+  //   CART_LIST_FAIL,
+
+
     CART_ADD_ITEM,
     CART_MINUS_ITEM,
 
@@ -10,6 +16,31 @@ import {
     CART_CLEAR_ITEMS,
 } from '../constants/cartConstants'
 
+// // reduce cart from db
+// export const cartListReducer = (state = { cartItems: [] }, action) => {
+//   switch (action.type) {
+//       case CART_LIST_REQUEST:
+//           return { loading: true, cartItems: [] }
+
+//       case CART_LIST_SUCCESS:
+//         console.log("cartItems",action.payload.cartItems)
+
+
+//           return {
+//               loading: false,
+//               cartItems: action.payload.cartItems,
+             
+//           }
+
+//       case CART_LIST_FAIL:
+
+//           return { loading: false, error: action.payload }
+
+//       default:
+//           return state
+//   }
+// }
+
 
 
 export const cartReducer = (state = { cartItems: [], shippingAddress: {} }, action) => {
@@ -18,8 +49,6 @@ export const cartReducer = (state = { cartItems: [], shippingAddress: {} }, acti
             const newItem = action.payload;
 
             const existingItem = state.cartItems.find(x => x.product === newItem.product);
-            console.log("add payload", newItem.product)
-            console.log("current item ", existingItem, "closed.......//////////")
 
 
             if (existingItem) {
@@ -67,8 +96,6 @@ export const cartReducer = (state = { cartItems: [], shippingAddress: {} }, acti
                   : item
                   );
                   
-                console.log("action paylod: ",minusItem)
-                console.log('Updated cartItems after CART_MINUS_ITEM:', updatedCartItems); // Add this line
           
                 return {
                   ...state,

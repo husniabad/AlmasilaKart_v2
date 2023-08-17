@@ -23,6 +23,11 @@ function Product({ match,product }) {
         <Card className="text-dark my-3 p-3 rounded">
             <Link to={`/product/${product._id}`}>
                 <Card.Img src={product.image} />
+                <div className='wishlist-heart '
+                style={{backgroundColor:'rgba(255, 255, 255, 0.5)'}}
+                >
+                    <i className='far fa-heart'></i>
+                </div>
             </Link>
 
             <Card.Body>
@@ -39,8 +44,11 @@ function Product({ match,product }) {
                 </Card.Text>
 
 
-                <Card.Text as="h3">
+                <Card.Text as="h3"  style={{ marginBottom: '0' , paddingBottom:'0'}}>
                     ${product.price}
+                </Card.Text>
+                <Card.Text  as='small'  style={{ marginTop: '0' }}>
+                    available: {product.countInStock}
                 </Card.Text>
                 <ProductButtons 
                 itemInCart={itemInCart} 

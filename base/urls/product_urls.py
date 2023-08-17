@@ -5,6 +5,9 @@ urlpatterns = [
 
     path('', views.getProducts, name="products"),
 
+    path('wishlist/', views.getWishList, name="wishlist"),
+
+
     path('create/', views.createProduct, name="product-create"),
     path('upload/', views.uploadImage, name="image-upload"),
 

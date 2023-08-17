@@ -5,8 +5,8 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from base.models import Product, Review
-from base.serializers import ProductSerializer
+from base.models import Product, Review, Wishlist
+from base.serializers import ProductSerializer,WishlistSerializer
 
 from rest_framework import status
 
@@ -21,7 +21,7 @@ def getProducts(request):
         name__icontains=query).order_by('-createdAt')
 
     page = request.query_params.get('page')
-    paginator = Paginator(products, 4)
+    paginator = Paginator(products, 6)
 
     try:
         products = paginator.page(page)
@@ -151,3 +151,11 @@ def createProductReview(request, pk):
         product.save()
 
         return Response('Review Added')
+    
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getWishList(request):
+    user = request.user
+    wishitem = Wishlist.objects.filter(user = user)
+    serializer = WishlistSerializer(wishitem, many=True)
+    return Response({'wishlist': serializer.data})

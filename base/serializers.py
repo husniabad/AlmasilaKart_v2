@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Product, Order, OrderItem, ShippingAddress, Review,Cart
+from .models import Product, Order, OrderItem, ShippingAddress, Review,Cart,Wishlist
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -105,7 +105,10 @@ class CartSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
+class WishlistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Wishlist
+        fields = '__all__'
 
 # class CartSerializer(serializers.ModelSerializer):
 #     class Meta:

@@ -37,6 +37,22 @@ class Review(models.Model):
     def __str__(self):
         return str(self.rating)
 
+class Wishlist(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    inWish = models.BooleanField(default=False)
+    _id = models.AutoField(primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.inWish)
+    
+    class Meta:
+    # Define the unique_together constraint to prevent duplicate entries
+        unique_together = ['product', 'user']
+
+
+
+    
 
 class Cart(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
@@ -46,6 +62,10 @@ class Cart(models.Model):
 
     def __str__(self):
         return str(self.qty)
+    
+    class Meta:
+    # Define the unique_together constraint to prevent duplicate entries
+        unique_together = ['product', 'user']
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)

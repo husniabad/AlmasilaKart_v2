@@ -44,7 +44,8 @@ function Product({ match,product }) {
                 </Card.Text>
                 <ProductButtons 
                 itemInCart={itemInCart} 
-                product={product} />
+                product={product}
+                 />
 
             </Card.Body>
         </Card>

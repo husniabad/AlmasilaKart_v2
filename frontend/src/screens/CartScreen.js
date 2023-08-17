@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import Message from '../components/Message'
 import { addToCart, removeFromCart, listCartItems } from '../actions/cartActions'
+import ProductButtons from '../components/ProductButtons'
 
 function CartScreen({ match, location, history }) {
     const productId = match.params.id
@@ -60,7 +61,7 @@ function CartScreen({ match, location, history }) {
                                             ${item.price}
                                         </Col>
 
-                                        <Col md={3}>
+                                        {/* <Col md={3}>
                                             <Form.Control
                                                 as="select"
                                                 value={item.qty}
@@ -76,10 +77,21 @@ function CartScreen({ match, location, history }) {
                                                 }
 
                                             </Form.Control>
+                                        </Col> */}
+                                        <Col md={2}>
+                                            <ProductButtons 
+                                            product={{ ...item, _id: item.product }}
+                                            itemInCart={item}
+                                            plusClass=" bg-light text-dark btn-sm border-0"
+                                            minusClass="bg-light text-dark btn-sm border-0"
+                                            trashIcon="minus"
+
+                                            />
                                         </Col>
 
                                         <Col md={1}>
                                             <Button
+                                            className='btn-sm'
                                                 type='button'
                                                 variant='light'
                                                 onClick={() => removeFromCartHandler(item.product)}

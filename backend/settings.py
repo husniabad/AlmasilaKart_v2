@@ -26,7 +26,7 @@ SECRET_KEY = 'sc%oco$+(3$z$at=z4j)#l-+ym)+_b11389mdt2^12m$bf63%@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'proshop-demo.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'proshop-demo.herokuapp.com','.vercel.app' , '.now.sh']
 
 
 # Application definition
@@ -120,10 +120,22 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD' : 'khpkpdyHqOUvDscwCg16',
+        'HOST' : 'containers-us-west-179.railway.app',
+        'PORT' : '5848'
     }
 }
 
@@ -190,6 +202,25 @@ MEDIA_ROOT = BASE_DIR / 'static/images'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STORAGES = {"default": {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"}}
+
+AWS_QUERYSTRING_AUTH =False
+
+AWS_ACCESS_KEY_ID = 'AKIATVTUZFHTZTWGRVFJ'
+
+AWS_SECRET_ACCESS_KEY = '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'
+
+AWS_STORAGE_BUCKET_NAME = 'almasila-kart'
+
+AWS_S3_REGION_NAME = 'eu-north-1'
+
+AWS_S3_ADDRESSING_STYLE = "virtual"
+
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_FILE_OVERWRITE = False 
+AWS_QUERYSTRING_AUTH = False 
 
 
 # Dont forget to reset database connection and hide password

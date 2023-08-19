@@ -26,7 +26,7 @@ SECRET_KEY = 'sc%oco$+(3$z$at=z4j)#l-+ym)+_b11389mdt2^12m$bf63%@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'proshop-demo.herokuapp.com','.vercel.app' , '.now.sh']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'almasila-kart-v2-git-master-husniabad.vercel.app','almasila-kart-v2-hm76h0efb-husniabad.vercel.app','.vercel.app' , '.now.sh']
 
 
 # Application definition

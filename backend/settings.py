@@ -202,9 +202,9 @@ print("base dir",BASE_DIR)
 MEDIA_ROOT = BASE_DIR / 'static/images'
 # STATIC_ROOT = BASE_DIR / 'staticfiles_build'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles',  'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'frontend', 'build'),
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'frontend/build'),
 
 CORS_ALLOW_ALL_ORIGINS = True
 

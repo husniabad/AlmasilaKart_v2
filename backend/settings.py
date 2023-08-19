@@ -99,8 +99,8 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'frontend/build')
+        'DIRS': [BASE_DIR/'frontend/build'
+            # os.path.join(BASE_DIR, 'frontend/build')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -201,10 +201,10 @@ print("base dir",BASE_DIR)
 
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
-STATIC_ROOT = BASE_DIR / 'staticfiles_build'
+# STATIC_ROOT = BASE_DIR / 'staticfiles_build'
 
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'frontend/build/static', 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'frontend/build/static', 'static')
 
 CORS_ALLOW_ALL_ORIGINS = True
 

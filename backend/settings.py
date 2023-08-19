@@ -28,6 +28,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost','.vercel.app' , '.now.sh']
 
+WSGI_APPLICATION = 'vercel_app.wsgi.app'
+
 
 # Application definition
 
@@ -202,7 +204,7 @@ MEDIA_ROOT = BASE_DIR / 'static/images'
 # STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'frontend/build/static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'frontend/build/static')
 
 CORS_ALLOW_ALL_ORIGINS = True
 

@@ -59,7 +59,7 @@ h3 {
 }
 
 .jungle-color {
-  background-color: #328695;
+  background-color: #004644;
 }
 
 .custom-button {
@@ -109,8 +109,7 @@ h3 {
     align-items: center;
     border-radius: 100px;
     background-color: #fff;
-    -webkit-transition: all 200ms ease;
-    transition: all 200ms ease;
+    transition: all 0.3s ease;
     color: #ff0000
 }
 
@@ -119,5 +118,5 @@ h3 {
 }
 
 .fa-heart:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }

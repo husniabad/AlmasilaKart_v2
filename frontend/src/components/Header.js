@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Navbar, Nav, Container, Row, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav, Container, Row, NavDropdown,Image } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
@@ -20,8 +20,10 @@ function Header() {
         <header>
             <Navbar /*bg="dark"*/ className='jungle-color' variant="dark" expand="lg" collapseOnSelect>
                 <Container>
-                    <LinkContainer to='/'>
-                        <Navbar.Brand>Clip Fart</Navbar.Brand>
+                    <LinkContainer className='mr-5' to='/'>
+                        <Navbar.Brand>
+                            <img src='Almasila_Kart_logo.png'   width="200px" height="50px" fluid />
+                            </Navbar.Brand>
                     </LinkContainer>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />

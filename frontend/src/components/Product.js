@@ -24,7 +24,8 @@ function Product({ match,product }) {
             <Link to={`/product/${product._id}`}>
                 <Card.Img src={product.image} />
                 <div className='wishlist-heart '
-                style={{backgroundColor:'rgba(255, 255, 255, 0.5)'}}
+                 
+                style={{backgroundColor:'rgba(240, 241, 242, 0.5)',transition: 'transform 0.2s, opacity 0.2s' }}
                 >
                     <i className='far fa-heart'></i>
                 </div>

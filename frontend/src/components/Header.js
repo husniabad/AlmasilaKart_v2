@@ -22,7 +22,7 @@ function Header() {
                 <Container>
                     <LinkContainer className='mr-5' to='/'>
                         <Navbar.Brand>
-                            <img src='Almasila_Kart_logo.png'   width="200px" height="50px" fluid />
+                            <img src='https://almasila-kart.s3.eu-north-1.amazonaws.com/icons/Almasila_Kart_logo.png'   width="200px" height="50px" fluid />
                             </Navbar.Brand>
                     </LinkContainer>
 

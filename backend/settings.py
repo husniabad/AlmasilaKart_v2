@@ -133,7 +133,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD' : 'khpkpdyHqOUvDscwCg16',
+        'PASSWORD' : os.environ.get('DB_PASS'),
         'HOST' : 'containers-us-west-179.railway.app',
         'PORT' : '5848'
     }
@@ -213,9 +213,9 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 AWS_QUERYSTRING_AUTH =False
 
-AWS_ACCESS_KEY_ID = 'AKIATVTUZFHT6KAYIJNG'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 
-AWS_SECRET_ACCESS_KEY = 'KayZh5+JkMYmi/yu4eEuG43LBdmB4UiS6MxljXPE'
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 AWS_STORAGE_BUCKET_NAME = 'almasila-kart'
 

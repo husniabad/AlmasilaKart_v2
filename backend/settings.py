@@ -139,6 +139,7 @@ DATABASES = {
     }
 }
 
+
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 # DATABASES = {
@@ -196,7 +197,6 @@ MEDIA_URL = '/images/'
 #     BASE_DIR / 'frontend/build/static'
 # ]
 
-print("base dir",BASE_DIR)
 
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
@@ -216,6 +216,7 @@ AWS_QUERYSTRING_AUTH =False
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    
 
 AWS_STORAGE_BUCKET_NAME = 'almasila-kart'
 
@@ -242,3 +243,7 @@ AWS_QUERYSTRING_AUTH = False
 
 if os.getcwd() == '/app':
     DEBUG = False
+
+
+
+print(os.getcwd() == '/app')
